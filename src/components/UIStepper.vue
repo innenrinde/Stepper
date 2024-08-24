@@ -11,11 +11,15 @@
 			}"
 		>
 			<div class="bullet">
-				<span />
+				<span
+					:class="{ 'passed': currentStep >= index }"
+				/>
 				<span @click="clickStep(index)">
 					{{ index + 1 }}
 				</span>
-				<span />
+				<span
+					:class="{ 'passed': currentStep > index }"
+				/>
 			</div>
 			<label @click="clickStep(index)">
 				{{ step.title }}
@@ -68,7 +72,6 @@ export default {
 	flex-direction: row;
 	align-items: flex-start;
 	justify-content: center;
-	border: solid 1px #DCDFE6;
 	padding: 20px;
 	font-size: 14px;
 	height: 100%;
@@ -118,6 +121,10 @@ export default {
 	border-top: solid 1px #DCDFE6;
 }
 
+.stepper .bullet span.passed {
+	border-top: solid 1px #136ace;
+}
+
 .stepper label {
 	padding: 0 15px 0 15px;
 	text-align: center;
@@ -125,20 +132,22 @@ export default {
 }
 
 .stepper .active .bullet span:nth-child(2) {
-	background-color: #5189c9;
+	background-color: #136ace;
 	color: #fff;
+	border: solid 4px #b8d7fa;
 }
 
 .stepper .active label {
-	color: #5189c9;
+	color: #136ace;
 }
 
 .stepper .passed .bullet span:nth-child(2) {
-	background-color: #eaeaee;
+	background-color: #136ace;
+	color: #fff;
 }
 
 .stepper .passed label {
-	color: #A2A2A2;
+	color: #136ace;
 }
 
 .stepper .error .bullet span:nth-child(2) {

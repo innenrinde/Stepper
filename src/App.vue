@@ -4,6 +4,17 @@
 		:step="currentStep"
 		@step="catchStep"
 	/>
+
+	<div
+		class="form"
+		v-for="(step, index) of steps"
+		:key="index"
+		v-show="currentStep === index"
+	>
+		<h1>{{ step.title }}</h1>
+		Your form here
+	</div>
+
 	<div class="buttons">
 		<button
 			:disabled="isFirstStep()"
@@ -108,8 +119,17 @@ export default {
   color: #2c3e50;
 }
 
+.form {
+	border: solid 1px #efefef;
+	padding: 30px;
+}
+
+.form h1 {
+	font-size: 20px;
+}
+
 .buttons {
-	margin-top: 90px;
+	margin-top: 50px;
 }
 
 .buttons button {
